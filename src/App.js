@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import MainContent from "./components/ui/MainContent/MainContent";
-import {store} from "./store";
+import { store } from "./redux/store";
 
 import "antd/dist/antd.min.css";
 import "./assets/reset.scss";

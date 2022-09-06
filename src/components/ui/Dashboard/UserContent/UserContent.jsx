@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 
-import { selectBlocks, setBlocks } from "../../../../blockSlice";
+import { selectBlocks, setBlocks } from "../../../../redux/blockSlice";
 import { db } from "../../../../firebase-config";
 import TextList from "./TextList/TextList";
 import TopBar from "./TopBar/TopBar";

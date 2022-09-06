@@ -1,33 +1,26 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Select } from "antd";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from 'react-redux';
 
-import { formItemLayout, tailFormItemLayout } from '../../../constants/const'
+import { formItemLayout, tailFormItemLayout } from "../../../constants/const";
 
 import { auth } from "../../../firebase-config";
-import { setUser } from '../../../userSlice'
 
 import styles from "./registerForm.module.scss";
 
-const { Option } = Select;
-
 const RegisterForm = () => {
   const [form] = Form.useForm();
-  const dispatch = useDispatch();
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
   const register = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
-      // dispatch(setUser(user));
-      // navigate('/');
     } catch (error) {
       console.log(error.message);
     }

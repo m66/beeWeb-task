@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { useDispatch } from 'react-redux'
 
 import { auth } from "../../../firebase-config";
-import { setUser } from '../../../userSlice'
 
 import styles from "./loginForm.module.scss";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
-  const dispatch = useDispatch()
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  let navigate = useNavigate();
 
   const login = async () => {
     try {
-      await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (error) {
       console.log(error.message);
     }

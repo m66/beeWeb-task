@@ -1,6 +1,3 @@
-import { auth } from "../../../firebase-config";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-
 import Sidebar from "./Sidebar/Sidebar";
 import UserContent from "./UserContent/UserContent";
 

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
-import { selectUser } from "../../../userSlice";
+import { selectUser } from "../../../redux/userSlice";
 import Dashboard from "../Dashboard/Dashboard";
 import NotFound from "../NotFound/NotFound";
 import Header from "../Header/Header";
@@ -26,7 +25,10 @@ const MainContent = () => {
           path="login"
           element={<RouteIf elem={<LoginForm />} showWhen={!user} />}
         />
-        <Route path="register" element={<RouteIf elem={<RegisterForm />} showWhen={!user} />} />
+        <Route
+          path="register"
+          element={<RouteIf elem={<RegisterForm />} showWhen={!user} />}
+        />
         <Route
           path="/"
           element={<Navigate to={user ? "/dashboard" : "/login"} replace />}

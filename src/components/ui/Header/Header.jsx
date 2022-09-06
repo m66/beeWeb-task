@@ -3,13 +3,10 @@ import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
-import { setUser, selectUser } from "../../../userSlice";
-import { setBlocks } from "../../../blockSlice";
+import { setUser, selectUser } from "../../../redux/userSlice";
+import { setBlocks } from "../../../redux/blockSlice";
 import { auth, db } from "../../../firebase-config";
 
 import { activeStyle } from "../../../constants/const";
@@ -32,19 +29,19 @@ const Header = () => {
 
     const getBlocks = async () => {
       const data = await getDocs(blocksCollectionRef);
-      dispatch(setBlocks(
-        data.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .map(({ text, id }) => ({
-            text: text.map(item=> ({
-               type: 'paragraph',
-               children: [
-                { text: item },
-              ],
-            })),
-            id,
-        }))
-      ));
+      dispatch(
+        setBlocks(
+          data.docs
+            .map((doc) => ({ ...doc.data(), id: doc.id }))
+            .map(({ text, id }) => ({
+              text: text.map((item) => ({
+                type: "paragraph",
+                children: [{ text: item }],
+              })),
+              id,
+            }))
+        )
+      );
     };
 
     getBlocks();
