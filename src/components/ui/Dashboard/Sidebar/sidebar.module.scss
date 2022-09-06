@@ -1,0 +1,11 @@
+@use '../../../../assets/global.scss';
+
+.sidebar {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid global.$light-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

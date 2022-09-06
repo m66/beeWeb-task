@@ -1,0 +1,10 @@
+.topBar {
+    padding: 8px 15px;
+    background: grey;
+    display: flex;
+    justify-content: flex-end;
+
+    &>div {
+        margin-right: 10px;
+    }
+}

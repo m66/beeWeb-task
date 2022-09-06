@@ -1,0 +1,26 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background: black;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+
+    & a:first-of-type {
+        margin-right: 10px;
+    }
+}
+
+.navBtn {
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    user-select: none;
+    height: 32px;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    color: rgba(0,0,0,.85);
+    border: 1px solid #d9d9d9;
+    background: #fff;
+}
