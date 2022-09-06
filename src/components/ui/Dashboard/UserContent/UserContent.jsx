@@ -64,6 +64,7 @@ const UserContent = () => {
   const deleteBlock = async (id) => {
     const blockDoc = doc(db, "blocks", id);
     await deleteDoc(blockDoc);
+    dispatch(setBlocks(blocks.filter((block) => block.id !== id)));
   };
 
   const handleSort = () => {
@@ -73,7 +74,11 @@ const UserContent = () => {
   return (
     <div className={styles.userContent}>
       <TopBar onSort={handleSort} handleAdd={handleAdd} />
-      <TextList onChange={updateBlock} blocks={blocks} />
+      <TextList
+        onChange={updateBlock}
+        blocks={blocks}
+        deleteBlock={deleteBlock}
+      />
     </div>
   );
 };
